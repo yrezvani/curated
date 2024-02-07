@@ -5,10 +5,11 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const ClassificationDetail = ({ apiKey }) => {
     const [artworks, setArtworks] = useState([]);
-    const [classificationInfo, setClassificationInfo] = useState(null); /
+    const [classificationInfo, setClassificationInfo] = useState(null); 
+    const { classificationId } = useParams();
 
     useEffect(() => {
-        fetchClassificationInfo(classificationId); 
+        fetchClassificationInfo(classificationId);
         fetchArtworksForClassification(classificationId);
     }, [classificationId, apiKey]);
 
@@ -25,14 +26,14 @@ const ClassificationDetail = ({ apiKey }) => {
     };
 
     const fetchArtworksForClassification = async (classificationId) => {
-        const url = `https://api.harvardartmuseums.org/object?apikey=${apiKey}&classification=${classificationId}&size=30&fields=id,title,primaryimageurl,period`;
+        const url = `https://api.harvardartmuseums.org/object?apikey=${apiKey}&classification=${classificationId}&size=30&fields=id,title,primaryimageurl,period`; 
         try {
             const response = await fetch(url);
             const data = await response.json();
             const filteredArtworks = data.records.filter(record => record.primaryimageurl);
 
             const groupedByPeriod = filteredArtworks.reduce((acc, artwork) => {
-                const period = artwork.period || 'Unknown'; 
+                const period = artwork.period || 'Unknown';
                 if (!acc[period]) {
                     acc[period] = [];
                 }

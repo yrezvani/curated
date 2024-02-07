@@ -20,7 +20,7 @@ function ArtGallery() {
     }, []);
 
     const fetchClassifications = async () => {
-        const url = `https://api.harvardartmuseums.org/classification?apikey=${apiKey}&size=100`; 
+        const url = `https://api.harvardartmuseums.org/classification?apikey=${apiKey}&size=100`; // Adjust size as needed
         try {
             const response = await fetch(url);
             const data = await response.json();
@@ -49,7 +49,7 @@ function ArtGallery() {
         
         const results = await Promise.all(promises);
         setClassificationArtworks(results.filter(result => result !== null));
-        setLoading(false);
+        // setLoading(false);
     };
 
     const settings = {
@@ -57,7 +57,7 @@ function ArtGallery() {
         infinite: false,
         speed: 500,
         slidesToShow: 3, 
-        slidesToScroll: 3, 
+        slidesToScroll: 3,
         afterChange: current => setActiveSlide(current)
     };
 
