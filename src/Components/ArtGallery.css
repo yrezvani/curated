@@ -1,0 +1,100 @@
+
+.art-gallery main {
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.art-gallery header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.art-gallery nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.art-gallery nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.art-gallery nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.gallery-item {
+    text-align: center;
+}
+
+
+.artwork-image {
+    max-height: 70vh; 
+    width: auto; 
+    max-width: 100%; 
+    object-fit: contain; 
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.artwork-image:hover {
+    transform: scale(1.05);
+}
+
+.art-gallery footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.slide {
+    padding: 15px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.slick-dots li button:before {
+    color: #FFFFFF; 
+    opacity: 1; 
+}
+
+.slick-dots li.slick-active button:before {
+    color: #CCCCCC; 
+}
+
+
+.slick-prev:before,
+.slick-next:before {
+    color: #FFFFFF; 
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5); 
+}
+
+
+.slick-prev,
+.slick-next {
+    z-index: 1; 
+}
+
+.slick-prev {
+    left: -1%; 
+}
+
+.loading-text {
+    font-size: 24px; 
+    text-align: center; 
+    padding: 20px; 
+}
