@@ -18,9 +18,7 @@ function Home() {
         </div>
     </div>
 </section>
-        <footer>
-            <p>© 2024 Art Explorer. All rights reserved.</p>
-        </footer>
+      
     </div>
   );
 }
