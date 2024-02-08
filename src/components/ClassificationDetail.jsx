@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import './ClassificationDetail.css'
@@ -8,6 +8,8 @@ const ClassificationDetail = ({ apiKey }) => {
     const [artworks, setArtworks] = useState([]);
     const [classificationInfo, setClassificationInfo] = useState(null); 
     const { classificationId } = useParams();
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         fetchClassificationInfo(classificationId);
@@ -42,15 +44,14 @@ const ClassificationDetail = ({ apiKey }) => {
             <h2 className='category-title' >{classificationInfo?.name}</h2>
             <p>{classificationInfo?.description}</p>
             <div className="gallery">
-                {artworks.map((artwork, index) => ( 
-                    <div key={index} className="artwork">
+                {artworks.map((artwork, index) => (
+                    <div key={index} className="artwork" onClick={() => navigate(`/artwork/${artwork.id}`)}>
                         <LazyLoadImage
                             alt={artwork.title}
                             src={artwork.primaryimageurl}
                             effect="blur"
                             className="artwork-image"
                         />
-                        <p>{artwork.title}</p>
                     </div>
                 ))}
             </div>

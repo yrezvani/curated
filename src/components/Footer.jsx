@@ -1,7 +1,7 @@
 import React from 'react';
 import "./footer.css";
 
-function footer() {
+function Footer() {
     return ( <section class="bg-white">
     <div className="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
         <nav className="flex flex-wrap justify-center -mx-5 -my-2">
@@ -60,5 +60,5 @@ function footer() {
     );
 }
 
-export default footer;
+export default Footer;
 
