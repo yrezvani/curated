@@ -25,9 +25,8 @@ function ArtGallery() {
     }, []);
 
     useEffect(() => {
-        // Update slider settings based on window width
         handleResize();
-    }, []); // Empty dependency array to only run once after initial render
+    }, []); 
 
     const fetchClassifications = async () => {
         const url = `https://api.harvardartmuseums.org/classification?apikey=${apiKey}&size=100`;
@@ -62,7 +61,6 @@ function ArtGallery() {
     };
 
     const handleResize = () => {
-        // Update slider settings based on window width
         const newSettings = { ...settings };
         if (window.innerWidth < 768) {
             newSettings.slidesToShow = 1;
@@ -74,7 +72,6 @@ function ArtGallery() {
         setSettings(newSettings);
     };
 
-    // Initial slider settings
     const [settings, setSettings] = useState({
         dots: true,
         infinite: false,
@@ -119,9 +116,6 @@ function ArtGallery() {
                     </Slider>
                 )}
             </main>
-            <footer>
-                <p>© 2024 Art Explorer. All rights reserved.</p>
-            </footer>
         </div>
     );
 }
