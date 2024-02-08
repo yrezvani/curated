@@ -1,0 +1,16 @@
+.classification-detail .artwork-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.classification-detail .artwork-item {
+    text-align: center;
+}
+
+.classification-detail .artwork-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
