@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import './ClassificationDetail.css'
 
 const ClassificationDetail = ({ apiKey }) => {
     const [artworks, setArtworks] = useState([]);
@@ -38,10 +39,10 @@ const ClassificationDetail = ({ apiKey }) => {
     
     return (
         <div>
-            <h2>{classificationInfo?.name}</h2>
+            <h2 className='category-title' >{classificationInfo?.name}</h2>
             <p>{classificationInfo?.description}</p>
             <div className="gallery">
-                {artworks.map((artwork, index) => ( // Adjusted to map directly over artworks
+                {artworks.map((artwork, index) => ( 
                     <div key={index} className="artwork">
                         <LazyLoadImage
                             alt={artwork.title}
