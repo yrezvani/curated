@@ -58,6 +58,11 @@ function ArtGallery() {
         slidesToScroll: 3,
     };
 
+    if (window.innerWidth < 768) {
+        settings.slidesToShow = 1;
+        settings.slidesToScroll = 1;
+    }
+    
     const handleArtworkClick = (classificationId) => {
         if (classificationId) {
             navigate(`/classification/${classificationId}`);
