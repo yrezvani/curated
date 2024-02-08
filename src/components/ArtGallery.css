@@ -98,3 +98,25 @@
     text-align: center;
     padding: 20px;
 }
+
+@media (max-width: 768px) {
+    
+
+    .slick-dots {
+        position: absolute;
+        bottom: -70px; /* Adjust the distance from the bottom as needed */
+        width: 100%;
+        list-style: none;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+    }
+
+    .slick-prev {
+        left: -0.5%; 
+    }
+
+    .slick-next {
+        right: -0.5%;
+    }
+  }

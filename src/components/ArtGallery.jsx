@@ -16,7 +16,18 @@ function ArtGallery() {
 
     useEffect(() => {
         fetchClassifications();
+        // Add event listener for window resize
+        window.addEventListener('resize', handleResize);
+        // Remove event listener when component unmounts
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
     }, []);
+
+    useEffect(() => {
+        // Update slider settings based on window width
+        handleResize();
+    }, []); // Empty dependency array to only run once after initial render
 
     const fetchClassifications = async () => {
         const url = `https://api.harvardartmuseums.org/classification?apikey=${apiKey}&size=100`;
@@ -50,18 +61,27 @@ function ArtGallery() {
         setClassificationArtworks(results.filter(result => result !== null));
     };
 
-    const settings = {
+    const handleResize = () => {
+        // Update slider settings based on window width
+        const newSettings = { ...settings };
+        if (window.innerWidth < 768) {
+            newSettings.slidesToShow = 1;
+            newSettings.slidesToScroll = 1;
+        } else {
+            newSettings.slidesToShow = 3;
+            newSettings.slidesToScroll = 3;
+        }
+        setSettings(newSettings);
+    };
+
+    // Initial slider settings
+    const [settings, setSettings] = useState({
         dots: true,
         infinite: false,
         speed: 500,
         slidesToShow: 3, 
         slidesToScroll: 3,
-    };
-
-    if (window.innerWidth < 768) {
-        settings.slidesToShow = 1;
-        settings.slidesToScroll = 1;
-    }
+    });
     
     const handleArtworkClick = (classificationId) => {
         if (classificationId) {
@@ -84,13 +104,15 @@ function ArtGallery() {
                         {classificationArtworks.map((item, index) => (
                             <div key={index} className="slide" onClick={() => handleArtworkClick(item.classificationId)}>
                                 <h3>{item.classification}</h3>
-                                <LazyLoadImage
-                                    alt={item.artwork.title}
-                                    src={item.artwork.primaryimageurl}
-                                    effect="blur"
-                                    width="100%"
-                                    className='artwork-image'
-                                />
+                                <div className="image-container">
+                                    <LazyLoadImage
+                                        alt={item.artwork.title}
+                                        src={item.artwork.primaryimageurl}
+                                        effect="blur"
+                                        width="100%"
+                                        className='artwork-image'
+                                    />
+                                </div>
                                 <p>{item.artwork.title}</p>
                             </div>
                         ))}
