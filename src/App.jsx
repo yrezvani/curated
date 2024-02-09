@@ -18,7 +18,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} /> {/* Home page route */}
-        <Route path="/art-gallery" element={<ArtGallery apiKey={apiKey} />} />
+        <Route path="/explorer" element={<ArtGallery apiKey={apiKey} />} />
         <Route path="/classification/:classificationId" element={<ClassificationDetail apiKey={apiKey} />} />
         <Route path="/artwork/:artworkId" element={<ArtworkDetail apiKey={apiKey} />} />
         <Route path="contact/*" element={<Contact />} />
