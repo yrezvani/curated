@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
+import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
-  { name: 'Art Gallery', href: '/art-gallery', current: false },
-  { name: 'Explore', href: '/explore', current: false },
+  { name: 'Explorer', href: '/explorer', current: false },
+  { name: 'My Gallery', href: '/my-gallery', current: false },
   { name: 'Search', href: '/search', current: false },
   { name: 'Contact', href: '/contact', current: false },
 ]
@@ -15,6 +15,7 @@ function classNames(...classes) {
 }
 
 export default function NavBar() {
+    
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -41,28 +42,30 @@ export default function NavBar() {
             </h2>
             </a>
                 </div>
+            
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                          'rounded-md px-3 py-2 text-sm font-medium'
-                        )}
-                        aria-current={item.current ? 'page' : undefined}
+                        <a
+                            key={item.name}
+                            href={item.href}
+                            className={classNames(
+                                item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                'rounded-md px-3 py-2 text-sm font-medium'
+                            )}
+                            aria-current={item.current ? 'page' : undefined}
                       >
                         {item.name}
                       </a>
                     ))}
                   </div>
                 </div>
-              </div>
-            <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                </div>
+                <form>
+                <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <input type="search" className="relative m-0 -mr-0.5 block min-w-0 flex-auto rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary" placeholder="Search by Art name" aria-label="Search" aria-describedby="button-addon1" />
 
-            <button className="relative z-[2] flex items-center rounded-r bg-primary px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg" type="button" id="button-addon1" data-te-ripple-init data-te-ripple-color="light">
+            <button className="relative z-[2] flex items-center rounded-r bg-primary px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg" type="submit" id="button-addon1" data-te-ripple-init data-te-ripple-color="light">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
@@ -74,7 +77,8 @@ export default function NavBar() {
           clipRule="evenodd" />
       </svg>
     </button>
-              </div>
+            </div>
+            </form>
             </div>
           </div>
 
