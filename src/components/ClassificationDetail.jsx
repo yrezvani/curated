@@ -28,31 +28,30 @@ const ClassificationDetail = ({ apiKey }) => {
         }
     };
 
-    const fetchAllArtworksForClassification = async (classificationId, page = 1, allArtworks = []) => {
-        if (allArtworks.length >= 400) {
-            setArtworks(allArtworks.slice(0, 400)); 
-            return;
-        }
-    
-        const url = `https://api.harvardartmuseums.org/object?apikey=${apiKey}&classification=${classificationId}&size=80&page=${page}&fields=id,title,primaryimageurl`;
+    const fetchAllArtworksForClassification = async (classificationId) => {
+        let allArtworks = [];
+        let page = 1;
+        const maxArtworks = 5000;
+        const pageSize = 80; 
+        const maxPages = Math.ceil(maxArtworks / pageSize); 
     
         try {
-            const response = await fetch(url);
-            const data = await response.json();
-            const artworksWithImages = data.records.filter(record => record.primaryimageurl);
-            const updatedArtworks = allArtworks.concat(artworksWithImages);
+            const fetchPage = (page) => 
+                fetch(`https://api.harvardartmuseums.org/object?apikey=${apiKey}&classification=${classificationId}&size=${pageSize}&page=${page}&fields=id,title,primaryimageurl`)
+                    .then(response => response.json())
+                    .then(data => data.records.filter(record => record.primaryimageurl));
     
-            if (data.info.next && updatedArtworks.length < 400) {
-                fetchAllArtworksForClassification(classificationId, page + 1, updatedArtworks);
-            } else {
-                setArtworks(updatedArtworks.slice(0, 400));
-            }
+            const pagePromises = Array.from({ length: maxPages }, (_, i) => fetchPage(i + 1));
+    
+            const pageResults = await Promise.all(pagePromises);
+    
+            allArtworks = pageResults.flat().slice(0, maxArtworks);
+    
+            setArtworks(allArtworks);
         } catch (error) {
             console.error(`Fetching artworks failed:`, error);
         }
     };
-    
-    
     
     return (
         <div>
