@@ -13,7 +13,7 @@ const ClassificationDetail = ({ apiKey }) => {
 
     useEffect(() => {
         fetchClassificationInfo(classificationId);
-        fetchArtworksForClassification(classificationId);
+        fetchAllArtworksForClassification(classificationId);
     }, [classificationId, apiKey]);
 
     const fetchClassificationInfo = async (classificationId) => {
@@ -28,16 +28,25 @@ const ClassificationDetail = ({ apiKey }) => {
         }
     };
 
-    const fetchArtworksForClassification = async (classificationId) => {
-        const url = `https://api.harvardartmuseums.org/object?apikey=${apiKey}&classification=${classificationId}&size=30&fields=id,title,primaryimageurl`; // Removed period from fields
+    const fetchAllArtworksForClassification = async (classificationId, page = 1, allArtworks = []) => {
+        const url = `https://api.harvardartmuseums.org/object?apikey=${apiKey}&classification=${classificationId}&size=80&page=${page}&fields=id,title,primaryimageurl`;
+    
         try {
             const response = await fetch(url);
             const data = await response.json();
-            setArtworks(data.records.filter(record => record.primaryimageurl)); // Directly set artworks without grouping
+            const artworksWithImages = data.records.filter(record => record.primaryimageurl);
+            const updatedArtworks = allArtworks.concat(artworksWithImages);
+    
+            if (data.info && data.info.next) {
+                return fetchAllArtworksForClassification(classificationId, page + 1, updatedArtworks);
+            } else {
+                setArtworks(updatedArtworks);
+            }
         } catch (error) {
             console.error(`Fetching artworks failed:`, error);
         }
     };
+    
     
     return (
         <div>
