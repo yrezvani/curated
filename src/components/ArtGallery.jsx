@@ -92,9 +92,7 @@ function ArtGallery() {
 
     return (
         <div className="art-gallery">
-            <header>
-                <h1>Art Explorer</h1>
-            </header>
+            <h1 className='explorer-title' >Art Explorer</h1>
             <main>
                 {loading ? ( 
                     <div className="loading-text">Loading...</div>
@@ -102,7 +100,7 @@ function ArtGallery() {
                     <Slider {...settings}>
                         {classificationArtworks.map((item, index) => (
                             <div key={index} className="slide" onClick={() => handleArtworkClick(item.classificationId)}>
-                                <h3>{item.classification}</h3>
+                                <h3 className='class-name' >{item.classification}</h3>
                                 <div className="image-container">
                                     <LazyLoadImage
                                         alt={item.artwork.title}
