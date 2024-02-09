@@ -5,6 +5,11 @@
     padding: 20px;
 }
 
+.class-title {
+    font-size: 2rem;
+    padding: 2rem;
+    text-align: center;
+}
 
 .classification-detail .artwork-item {
     text-align: center;
