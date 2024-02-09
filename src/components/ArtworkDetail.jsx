@@ -20,8 +20,8 @@ const ArtworkDetail = ({ apiKey }) => {
 
     return (
         <div className='artwork-detail' >
-            <img src={artwork.primaryimageurl} alt={artwork.title} />
             <h2>{artwork.title}</h2>
+            <img src={artwork.primaryimageurl} alt={artwork.title} />
             <p>{artwork.description}</p>
         </div>
     );
