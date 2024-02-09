@@ -41,7 +41,7 @@ const ClassificationDetail = ({ apiKey }) => {
     
     return (
         <div>
-            <h2 className='category-title' >{classificationInfo?.name}</h2>
+            <h2 className='class-title' >{classificationInfo?.name}</h2>
             <p>{classificationInfo?.description}</p>
             <div className="gallery">
                 {artworks.map((artwork, index) => (
