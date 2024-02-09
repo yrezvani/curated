@@ -99,7 +99,9 @@
     padding: 20px;
 }
 
-
+.image-container > span > img {
+    margin: 0 auto;
+}
 
 @media (max-width: 768px) {
     
