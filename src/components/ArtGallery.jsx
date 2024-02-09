@@ -16,9 +16,7 @@ function ArtGallery() {
 
     useEffect(() => {
         fetchClassifications();
-        // Add event listener for window resize
         window.addEventListener('resize', handleResize);
-        // Remove event listener when component unmounts
         return () => {
             window.removeEventListener('resize', handleResize);
         };
@@ -28,12 +26,15 @@ function ArtGallery() {
         handleResize();
     }, []); 
 
+    const interestedClassificationIds = ['492', '1078', '344', '197', '17', '19', '21', '23', '26', '30', '32', '50', '62', '75', '105', '133', '155', '185', '242', '359', '381', '384', '1185'];
+    
     const fetchClassifications = async () => {
         const url = `https://api.harvardartmuseums.org/classification?apikey=${apiKey}&size=100`;
         try {
             const response = await fetch(url);
             const data = await response.json();
             const classifications = data.records;
+            console.log(classifications);
             await fetchArtworksForClassifications(classifications);
             setLoading(false);
         } catch (error) {
@@ -43,7 +44,8 @@ function ArtGallery() {
     };
 
     const fetchArtworksForClassifications = async (classifications) => {
-        const promises = classifications.map(async classification => {
+        const filteredClassifications = classifications.filter(classification => interestedClassificationIds.includes(classification.id.toString()));
+        const promises = filteredClassifications.map(async classification => {
             const response = await fetch(`https://api.harvardartmuseums.org/object?apikey=${apiKey}&classification=${classification.id}&size=1&fields=id,title,primaryimageurl`);
             const data = await response.json();
             if (data.records.length > 0 && data.records[0].primaryimageurl) {
