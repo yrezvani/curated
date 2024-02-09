@@ -11,7 +11,8 @@ const apiKey = '0f4dc3f5-f76a-40aa-adaf-78bcdc8f2e05';
 
 function App() {
   return (
-    <>
+    <div className='page-container' >
+      <div className="content-wrap">
       <Router>
       <NavBar />
       <Routes>
@@ -20,9 +21,10 @@ function App() {
         <Route path="/classification/:classificationId" element={<ClassificationDetail apiKey={apiKey} />} />
         <Route path="/artwork/:artworkId" element={<ArtworkDetail apiKey={apiKey} />} />
       </Routes>
-    </Router>
-    <Footer />
-    </>
+      </Router>
+      </div>
+      <Footer />
+    </div>
   );
 }
 

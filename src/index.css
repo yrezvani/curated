@@ -17,3 +17,18 @@ header {
 header h1 {
   font-size: 1.5rem;
 }
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-wrap {
+  flex: 1;
+}
