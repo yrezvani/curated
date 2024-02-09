@@ -110,7 +110,7 @@ function ArtGallery() {
                                         className='artwork-image'
                                     />
                                 </div>
-                                <p>{item.artwork.title}</p>
+                                <p className='artwork-description' >{item.artwork.title}</p>
                             </div>
                         ))}
                     </Slider>

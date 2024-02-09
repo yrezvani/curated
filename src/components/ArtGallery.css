@@ -47,6 +47,10 @@
     transform: scale(1.05);
 }
 
+.artwork-description {
+    padding: 1rem;
+}
+
 .art-gallery footer {
     background-color: #333;
     color: #fff;
@@ -99,6 +103,15 @@
 
 @media (max-width: 768px) {
     
+    .explorer-title {
+        font-size: 1.4rem;
+        padding: 1.2rem;
+    }
+
+    .class-name {
+        padding: 1rem;
+        font-size: 1.1rem;
+    }
 
     .slick-dots {
         position: absolute;
