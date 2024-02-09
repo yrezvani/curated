@@ -70,24 +70,24 @@ const ContactForm = () => {
     <div className='ContactForm'>
       <div className='container'>
         <div className='row'>
-          <div className='col-12 text-center'>
+          <div className='text-center'>
             <div className='contactForm'>
               <form id='contact-form' noValidate onSubmit={handleSubmit(onSubmit)}>
                 <div className='row formRow'>
-                  <div className='col-6'>
+                  <div className='col'>
                     <input
                       type='text'
                       name='name'
-                      className='form-control formInput'
+                      className='form-control formInput w-full rounded-md border border-[#e0e0e0] bg-white my-2 mx-8 py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md'
                       placeholder='Name'
                       {...register('name', { required: true })}
                     />
                   </div>
-                  <div className='col-6'>
+                  <div className='col'>
                     <input
                       type='email'
                       name='email'
-                      className='form-control formInput'
+                      className='form-control formInput w-full rounded-md border border-[#e0e0e0] bg-white my-2 mx-8 py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md'
                       placeholder='Email address'
                       {...register('email', { required: true })}
                     />
@@ -98,7 +98,7 @@ const ContactForm = () => {
                     <input
                       type='text'
                       name='subject'
-                      className='form-control formInput'
+                      className='form-control formInput w-full rounded-md border border-[#e0e0e0] bg-white my-2 mx-8 py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md'
                       placeholder='Subject'
                       {...register('subject', { required: true })}
                     />
@@ -109,7 +109,7 @@ const ContactForm = () => {
                     <textarea
                       rows={3}
                       name='message'
-                      className='form-control formInput'
+                      className='form-control formInput w-full rounded-md border border-[#e0e0e0] bg-white my-10 mx-8 py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md'
                       placeholder='Message'
                       {...register('message', { required: true })}
                     />
