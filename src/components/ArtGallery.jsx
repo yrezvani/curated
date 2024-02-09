@@ -34,7 +34,6 @@ function ArtGallery() {
             const response = await fetch(url);
             const data = await response.json();
             const classifications = data.records;
-            console.log(classifications);
             await fetchArtworksForClassifications(classifications);
             setLoading(false);
         } catch (error) {

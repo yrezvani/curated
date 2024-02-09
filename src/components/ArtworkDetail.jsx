@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import './ArtworkDetail.css'
 
 const ArtworkDetail = ({ apiKey }) => {
@@ -10,7 +12,6 @@ const ArtworkDetail = ({ apiKey }) => {
         const fetchData = async () => {
             const response = await fetch(`https://api.harvardartmuseums.org/object/${artworkId}?apikey=${apiKey}`);
             const data = await response.json();
-            console.log(data);
             setArtwork(data);
         };
         fetchData();
@@ -19,9 +20,15 @@ const ArtworkDetail = ({ apiKey }) => {
     if (!artwork) return <div>Loading...</div>;
 
     return (
-        <div className='artwork-detail' >
+        <div className='artwork-detail'>
             <h2>{artwork.title}</h2>
-            <img src={artwork.primaryimageurl} alt={artwork.title} />
+            <LazyLoadImage
+                alt={artwork.title}
+                src={artwork.primaryimageurl}
+                effect="blur"
+                className='artwork-image'
+            />
+            {artwork.period && <p><strong>Period:</strong> {artwork.period}</p>}
             <p>{artwork.description}</p>
         </div>
     );
