@@ -11,19 +11,15 @@
     text-align: center;
 }
 
-.art-gallery nav ul {
-    list-style-type: none;
-    padding: 0;
+.explorer-title {
+    text-align: center;
+    font-size: 2rem;
+    padding: 2rem;
 }
 
-.art-gallery nav ul li {
-    display: inline;
-    margin: 0 10px;
-}
-
-.art-gallery nav ul li a {
-    color: #fff;
-    text-decoration: none;
+.class-name {
+    padding: 1rem;
+    font-size: 1.4rem;
 }
 
 .gallery {
@@ -98,6 +94,8 @@
     text-align: center;
     padding: 20px;
 }
+
+
 
 @media (max-width: 768px) {
     
