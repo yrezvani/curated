@@ -12,6 +12,7 @@ const ArtworkDetail = ({ apiKey }) => {
         const fetchData = async () => {
             const response = await fetch(`https://api.harvardartmuseums.org/object/${artworkId}?apikey=${apiKey}`);
             const data = await response.json();
+            console.log(data);
             setArtwork(data);
         };
         fetchData();
@@ -29,6 +30,7 @@ const ArtworkDetail = ({ apiKey }) => {
                 className='artwork-image'
             />
             {artwork.period && <p><strong>Period:</strong> {artwork.period}</p>}
+            {artwork.people && <p><strong>Artist:</strong> {artwork.people[0].name}</p>}
             <p>{artwork.description}</p>
         </div>
     );
