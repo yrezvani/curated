@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import './ArtworkDetail.css'
-import { IconButton } from "@material-tailwind/react";
+
 
 const ArtworkDetail = ({ apiKey }) => {
     const { artworkId } = useParams();
@@ -32,7 +32,8 @@ const ArtworkDetail = ({ apiKey }) => {
                     className='artwork-image'
                 />
                 <div className='icon-overlay'>
-                    <button className='icon-button fill-black'>🖤</button>
+                    <button className='icon-button'>🖤</button>
+                    <p className="btn-caption">Save to your gallery</p>
                 </div>
             </div>
 

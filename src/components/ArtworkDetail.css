@@ -52,3 +52,18 @@
 .icon-button:hover {
     background-color: rgba(255, 255, 255, 1);
 }
+
+.btn-caption { 
+    color: black; 
+    opacity: 0;
+    background-color: white;
+    margin-left: 10px;
+    padding-left: 2px;
+    padding-right: 2px;
+    font-size: xx-small;
+    border: black 1px;
+}
+
+.icon-button:hover + .btn-caption { 
+    opacity: 1; 
+}
