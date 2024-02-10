@@ -27,6 +27,8 @@ const ArtworkDetail = ({ apiKey }) => {
             console.log(items);
         }
     };
+    
+
 
     if (!artwork) return <div>Loading...</div>;
 
