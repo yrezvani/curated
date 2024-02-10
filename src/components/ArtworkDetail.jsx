@@ -18,6 +18,7 @@ const ArtworkDetail = ({ apiKey }) => {
         fetchData();
     }, [artworkId, apiKey]);
 
+    {/*create function to save artwork to local storage*/} 
     const saveToGallery = () => {
         let items = JSON.parse(localStorage.getItem('items')) || [];
         if (artwork) {
@@ -39,6 +40,7 @@ const ArtworkDetail = ({ apiKey }) => {
                     effect="blur"
                     className='artwork-image'
                 />
+                {/*create save button and call save to local storage function*/} 
                 <div className='icon-overlay'>
                     <button onClick={saveToGallery} className='icon-button'>🖤</button>
                     <p className="btn-caption">Save to your gallery</p>
