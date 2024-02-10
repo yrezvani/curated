@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import './ArtworkDetail.css'
+import { IconButton } from "@material-tailwind/react";
 
 const ArtworkDetail = ({ apiKey }) => {
     const { artworkId } = useParams();
@@ -23,12 +24,18 @@ const ArtworkDetail = ({ apiKey }) => {
     return (
         <div className='artwork-detail'>
             <h2>{artwork.title}</h2>
-            <LazyLoadImage
-                alt={artwork.title}
-                src={artwork.primaryimageurl}
-                effect="blur"
-                className='artwork-image'
-            />
+            <div className='artwork-image-container'>
+                <LazyLoadImage
+                    alt={artwork.title}
+                    src={artwork.primaryimageurl}
+                    effect="blur"
+                    className='artwork-image'
+                />
+                <div className='icon-overlay'>
+                    <button className='icon-button fill-black'>🖤</button>
+                </div>
+            </div>
+
             {artwork.period && <p><strong>Period:</strong> {artwork.period}</p>}
             {artwork.people && <p><strong>Artist:</strong> {artwork.people[0].name}</p>}
             <p>{artwork.description}</p>
