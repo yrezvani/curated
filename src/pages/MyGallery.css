@@ -10,3 +10,13 @@
     margin: 20px;
 
   }
+
+  /* Responsive layout - makes a one column layout */
+@media only screen and (max-width: 600px) {
+    .my-gallery {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin: auto;
+    }
+  }
