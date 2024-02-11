@@ -7,6 +7,7 @@ import './ClassificationDetail.css'
 const ClassificationDetail = ({ apiKey }) => {
     const [artworks, setArtworks] = useState([]);
     const [classificationInfo, setClassificationInfo] = useState(null); 
+    const [loading, setLoading] = useState(true);
     const { classificationId } = useParams();
 
     const navigate = useNavigate()
@@ -48,6 +49,7 @@ const ClassificationDetail = ({ apiKey }) => {
             allArtworks = pageResults.flat().slice(0, maxArtworks);
     
             setArtworks(allArtworks);
+            setLoading(false);
         } catch (error) {
             console.error(`Fetching artworks failed:`, error);
         }
@@ -55,11 +57,16 @@ const ClassificationDetail = ({ apiKey }) => {
     
     return (
         <div>
-            <h2 className='class-title' >{classificationInfo?.name}</h2>
+            <h2 className="class-title">{classificationInfo?.name}</h2>
             <p>{classificationInfo?.description}</p>
+            {artworks.length === 0 && <p className="loading-text">Loading...</p>} {/* Render loading text when no artworks */}            
             <div className="gallery">
                 {artworks.map((artwork, index) => (
-                    <div key={index} className="artwork" onClick={() => navigate(`/artwork/${artwork.id}`)}>
+                    <div
+                        key={index}
+                        className="artwork"
+                        onClick={() => navigate(`/artwork/${artwork.id}`)}
+                    >
                         <LazyLoadImage
                             alt={artwork.title}
                             src={artwork.primaryimageurl}
@@ -71,6 +78,7 @@ const ClassificationDetail = ({ apiKey }) => {
             </div>
         </div>
     );
+    
 };
 
 export default ClassificationDetail;
