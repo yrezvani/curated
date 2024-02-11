@@ -14,18 +14,31 @@ const SearchResults = ({ apiKey }) => {
     }
   }, [location]);
 
-  const fetchArtworks = async (query) => {
-    const url = `https://api.harvardartmuseums.org/object?apikey=${apiKey}&title=${encodeURIComponent(query)}&size=10`;
+  const fetchArtworks = async (query='stone') => {
+    let allRecords = [];
+    let nextPage = `https://api.harvardartmuseums.org/object?apikey=${apiKey}&title=${encodeURIComponent(query)}&size=100`;
+  
     try {
-      const response = await fetch(url);
-      const data = await response.json();
-      setResults(data.records);
+      while (nextPage) {
+        const response = await fetch(nextPage);
+        const data = await response.json();
+        allRecords = [...allRecords, ...data.records];
+        nextPage = data.info.next;
+      }
+  
+      setResults(allRecords);
     } catch (error) {
       console.error("Failed to fetch artworks:", error);
     }
   };
+  
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    navigate(`/search?query=${encodeURIComponent(query)}&artist=${encodeURIComponent(artist)}`);
+  };
 
   return (
+    <>
     <div>
       {results.map((artwork, index) => (
         <div key={index}>
@@ -40,6 +53,24 @@ const SearchResults = ({ apiKey }) => {
         </div>
       ))}
     </div>
+    <div>
+        <form onSubmit={handleSearch}>
+            <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search by Artwork"
+            />
+            <input
+            type="text"
+            value={artist}
+            onChange={(e) => setArtist(e.target.value)}
+            placeholder="Search by Artist"
+            />
+            <button type="submit">Search</button>
+      </form>        
+    </div>
+    </>
   );
 };
 
