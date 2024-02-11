@@ -21,19 +21,27 @@ const SearchResults = ({ apiKey }) => {
   }, [location]);
 
   const fetchArtworks = async (queryParam, artistParam) => {
+    let apiURL = `https://api.harvardartmuseums.org/object?apikey=${apiKey}&size=5000`;
     setLoading(true);
-    let allRecords = [];
-    let apiURL = `https://api.harvardartmuseums.org/object?apikey=${apiKey}&size=100`;
-    if (queryParam) apiURL += `&title=${encodeURIComponent(queryParam)}`;
-    if (artistParam) apiURL += `&person=${encodeURIComponent(artistParam)}`;
-
+    const fetchPage = async (page) => {
+      const response = await fetch(
+        `${apiURL}&page=${page}${queryParam ? `&title=${encodeURIComponent(queryParam)}` : ''}${
+          artistParam ? `&person=${encodeURIComponent(artistParam)}` : ''
+        }`
+      );
+      const data = await response.json();
+      return data.records.filter((record) => record.primaryimageurl);
+    };
+  
     try {
-      while (apiURL) {
-        const response = await fetch(apiURL);
-        const data = await response.json();
-        allRecords = [...allRecords, ...data.records.filter(record => record.primaryimageurl)];
-        apiURL = data.info.next;
-      }
+      const initialResponse = await fetch(`${apiURL}&page=1`);
+      const initialData = await initialResponse.json();
+      const totalPages = Math.ceil(initialData.info.totalrecords / 100);
+      const pageNumbers = Array.from({ length: Math.min(totalPages, 10) }, (_, i) => i + 1); 
+  
+      const pagesData = await Promise.all(pageNumbers.map((page) => fetchPage(page)));
+      const allRecords = pagesData.flat();
+  
       setResults(allRecords);
     } catch (error) {
       console.error("Failed to fetch artworks:", error);
@@ -41,6 +49,7 @@ const SearchResults = ({ apiKey }) => {
       setLoading(false);
     }
   };
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -73,21 +82,22 @@ const SearchResults = ({ apiKey }) => {
           <p>No artworks found. Please try another search.</p>
         </div>
       ) : (
-        <div className="artwork-results"> 
-          {results.map((artwork, index) => (
-            <div key={index} className="artwork-item"> 
-              <h3>{artwork.title}</h3>
-              {artwork.primaryimageurl && (
-                <LazyLoadImage
-                  alt={artwork.title}
-                  src={artwork.primaryimageurl}
-                  effect="blur"
-                  className="artwork-image" 
-                />
-              )}
+            <div className="artwork-results"> 
+              {results.map((artwork, index) => (
+                <div key={index} className="artwork-item" onClick={() => navigate(`/artwork/${artwork.id}`)}> 
+                  <h3>{artwork.title}</h3>
+                  {artwork.primaryimageurl && (
+                    <LazyLoadImage
+                      alt={artwork.title}
+                      src={artwork.primaryimageurl}
+                      effect="blur"
+                      className="artwork-image" 
+                    />
+                  )}
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+
       )}
     </div>
   );
