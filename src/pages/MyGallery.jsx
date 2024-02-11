@@ -18,7 +18,7 @@ const MyGallery = () => {
         <div className='my-gallery'>
             {items.map(item => (
                 <>
-            <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" key={item.id}>
+            <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 gallery-item" key={item.id}>
             <img className="rounded-t-lg" src={item.primaryimageurl} alt={item.title} />
             <div className="p-5">
             <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{item.title}</h5>
