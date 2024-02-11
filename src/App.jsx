@@ -7,6 +7,7 @@ import NavBar from './pages/NavBar';
 
 import Footer from './components/Footer';
 import Contact from './pages/Contact';
+import MyGallery from './pages/MyGallery';
 
 const apiKey = '0f4dc3f5-f76a-40aa-adaf-78bcdc8f2e05';
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/explorer" element={<ArtGallery apiKey={apiKey} />} />
         <Route path="/classification/:classificationId" element={<ClassificationDetail apiKey={apiKey} />} />
         <Route path="/artwork/:artworkId" element={<ArtworkDetail apiKey={apiKey} />} />
+        <Route path="/my-gallery" element={<MyGallery />} />  
         <Route path="contact/*" element={<Contact />} />
       </Routes>
       </Router>
