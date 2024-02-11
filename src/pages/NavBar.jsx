@@ -26,7 +26,10 @@ export default function NavBar() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate(`/search?title=${searchQuery}`);
+    if (searchQuery.trim() !== '') {
+      navigate(`/search?query=${encodeURIComponent(searchQuery.trim())}`);
+      setSearchQuery(''); 
+    }
   };
 
   return (
@@ -115,6 +118,5 @@ export default function NavBar() {
         </>
       )}
     </Disclosure>
-  )
-  
+  );
 }

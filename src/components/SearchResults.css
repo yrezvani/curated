@@ -1,0 +1,39 @@
+.search-form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .search-input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .search-button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .artwork-result {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .artwork-image {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+  }
+  
+  .no-results {
+    text-align: center;
+    font-size: 18px;
+    color: red;
+  }
+  
