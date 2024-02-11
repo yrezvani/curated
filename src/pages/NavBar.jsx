@@ -31,6 +31,18 @@ export default function NavBar() {
       setSearchQuery(''); 
     }
   };
+    
+    {/* Changing the current NavBar item */}
+    
+  const [navItems, setNavItems] = useState(navigation);
+
+  const handleItemClick = (index) => {
+    const updatedNavItems = navItems.map((item, i) => ({
+      ...item,
+      current: i === index,
+    }));
+    setNavItems(updatedNavItems);
+  };
 
   return (
     <Disclosure as="nav" className="bg-gray-800">
