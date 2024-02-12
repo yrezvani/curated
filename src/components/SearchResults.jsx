@@ -67,6 +67,7 @@ const SearchResults = ({ apiKey }) => {
   // Render search form and results
   return (
     <div className="search-results-container">
+      <h2>Search for Artwork</h2>
       <form onSubmit={handleSubmit} className="search-form">
         <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search by Artwork" className="search-input" />
         <input type="text" value={artist} onChange={(e) => setArtist(e.target.value)} placeholder="Search by Artist" className="search-input" />
