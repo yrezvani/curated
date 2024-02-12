@@ -1,8 +1,13 @@
 .search-results-container {
     margin: 20px;
-    margin-top: 4rem;
+    margin-top: 1.5rem;
   }
   
+  .search-results-container h2 {
+    padding: 2.5rem;
+    text-align: center;
+    font-size: 2rem;
+  }
   .search-form {
     display: flex;
     justify-content: center;
@@ -63,3 +68,35 @@
   .search-text {
     text-align: center;
   }
+
+  @media (max-width: 768px) {
+
+    .search-form {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .search-input {
+      padding: 8px;
+      margin-right: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .search-results-container {
+      margin: 20px;
+      margin-top: 1rem;
+    }
+    
+    .search-results-container h2 {
+      padding: 2rem;
+      text-align: center;
+      font-size: 1.4rem;
+    }
+
+    .search-text {
+      font-size: 0.9rem;
+    }
+  }
+
