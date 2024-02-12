@@ -4,10 +4,7 @@ import "./Home.css"
 function Home() {
   return (
     <div className="home-container">
-        <header>
-            <h1>Welcome</h1>
-        </header>
-        <section className="bg-center bg-no-repeat bg-[url('../curated-home1.jpg')] bg-gray-300 bg-blend-multiply">
+        <section className="bg-center bg-no-repeat bg-[url('../curated-home1.jpg')] bg-gray-300 bg-blend-multiply h-svh w-screen">
         <div className="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
             <h1 className="mb-4 text-6xl font-thin font-heading tracking-tight leading-none text-white md:text-7xl lg:text-8xl">CURATED</h1>
             <p className="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">• find your favourites in our catologue • find something new in our explorer • find your CURATE-ivity in <u>your</u> gallery •</p>
