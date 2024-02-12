@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState} from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useNavigate } from 'react-router-dom'
@@ -34,15 +34,16 @@ export default function NavBar() {
     
     {/* Changing the current NavBar item */}
     
-  const [navItems, setNavItems] = useState(navigation);
+    const [navItems, setNavItems] = useState(navigation);
+    
+        const handleItemClick = (index) => {
+            const updatedNavItems = navItems.map((item, i) => ({
+              ...item,
+              current: i === index,
+            }));
+            setNavItems(updatedNavItems);
+          };
 
-  const handleItemClick = (index) => {
-    const updatedNavItems = navItems.map((item, i) => ({
-      ...item,
-      current: i === index,
-    }));
-    setNavItems(updatedNavItems);
-  };
 
   return (
     <Disclosure as="nav" className="bg-gray-800">
@@ -72,7 +73,7 @@ export default function NavBar() {
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
-                    {navigation.map((item) => (
+                    {navItems.map((item, index) => (
                       <a
                         key={item.name}
                         href={item.href}
@@ -80,7 +81,8 @@ export default function NavBar() {
                           item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                           'rounded-md px-3 py-2 text-sm font-medium'
                         )}
-                        aria-current={item.current ? 'page' : undefined}
+                            aria-current={item.current ? 'page' : undefined}
+                            onClick={() => handleItemClick(index)}
                       >
                         {item.name}
                       </a>
