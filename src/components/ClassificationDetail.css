@@ -39,3 +39,19 @@
     height: auto;
     display: block;
 }
+
+
+@media (max-width: 768px) {
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 20px; 
+        padding: 10px;
+    }
+    
+    .class-title {
+        font-size: 1.5rem;
+        padding: 14px;
+    }
+}
+
