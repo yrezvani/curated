@@ -67,6 +67,7 @@
 
 .icon-button:hover + .btn-caption { 
     opacity: 1; 
+    color: black;
 }
 
 .icon-overlay.clicked .icon-button {
