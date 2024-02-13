@@ -47,6 +47,7 @@
     border-radius: 50%;
     padding: 10px;
     transition: background-color 0.3s ease;
+    color: black;
 }
 
 .icon-button:hover {
@@ -66,4 +67,10 @@
 
 .icon-button:hover + .btn-caption { 
     opacity: 1; 
+}
+
+.icon-overlay.clicked .icon-button {
+    color: #cb416b;
+    transform: scale(1.5);
+    transition: all 0.3s ease;
 }

@@ -3,10 +3,13 @@ import { useParams } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import './ArtworkDetail.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
 const ArtworkDetail = ({ apiKey }) => {
     const { artworkId } = useParams();
     const [artwork, setArtwork] = useState(null);
+    const [isClicked, setIsClicked] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -18,7 +21,6 @@ const ArtworkDetail = ({ apiKey }) => {
         fetchData();
     }, [artworkId, apiKey]);
 
-    {/*create function to save artwork to local storage*/} 
     const saveToGallery = () => {
         let items = JSON.parse(localStorage.getItem('items')) || [];
         if (artwork) {
@@ -27,8 +29,14 @@ const ArtworkDetail = ({ apiKey }) => {
             console.log(items);
         }
     };
-    
 
+    const handleButtonClick = () => {
+        setIsClicked(true);
+        setTimeout(() => {
+            setIsClicked(false);
+        }, 1000);
+        saveToGallery();
+    };
 
     if (!artwork) return <div>Loading...</div>;
 
@@ -42,9 +50,10 @@ const ArtworkDetail = ({ apiKey }) => {
                     effect="blur"
                     className='artwork-image'
                 />
-                {/*create save button and call save to local storage function*/} 
-                <div className='icon-overlay'>
-                    <button onClick={saveToGallery} className='icon-button'>🖤</button>
+                <div className={`icon-overlay ${isClicked ? 'clicked' : ''}`}>
+                    <button onClick={handleButtonClick} className='icon-button'>
+                        <FontAwesomeIcon icon={faHeart} />
+                    </button>
                     <p className="btn-caption">Save to your gallery</p>
                 </div>
             </div>
