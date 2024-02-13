@@ -24,9 +24,16 @@ const ArtworkDetail = ({ apiKey }) => {
     const saveToGallery = () => {
         let items = JSON.parse(localStorage.getItem('items')) || [];
         if (artwork) {
-            items.push(artwork);
-            localStorage.setItem('items', JSON.stringify(items));
-            console.log(items);
+            {/* create a check in local storage */}
+            const isAlreadySaved = items.some(item => item.id === artwork.id);
+            if (!isAlreadySaved) {
+                items.push(artwork);
+                localStorage.setItem('items', JSON.stringify(items));
+                console.log(items);
+                handleButtonClick();
+            } else {
+                console.log("Artwork already saved.");
+            }
         }
     };
 
@@ -35,7 +42,6 @@ const ArtworkDetail = ({ apiKey }) => {
         setTimeout(() => {
             setIsClicked(false);
         }, 1000);
-        saveToGallery();
     };
 
     if (!artwork) return <div>Loading...</div>;
@@ -51,7 +57,7 @@ const ArtworkDetail = ({ apiKey }) => {
                     className='artwork-image'
                 />
                 <div className={`icon-overlay ${isClicked ? 'clicked' : ''}`}>
-                    <button onClick={handleButtonClick} className='icon-button'>
+                    <button onClick={saveToGallery} className='icon-button'>
                         <FontAwesomeIcon icon={faHeart} />
                     </button>
                     <p className="btn-caption">Save to your gallery</p>
