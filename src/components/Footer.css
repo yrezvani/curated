@@ -2,3 +2,6 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+.bg-navy {
+    background-color: rgb(15, 21, 33)
+}
