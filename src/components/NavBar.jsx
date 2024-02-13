@@ -89,7 +89,7 @@ import { useNavigate } from 'react-router-dom';const navigation = [
                 />
                 <button
                   type="submit"
-                  className="p-2 text-white bg-blue-500 rounded-md"
+                  className="p-2 text-white bg-transparent rounded-md"
                 >
                   <MagnifyingGlassIcon className="w-5 h-5" />
                 </button>

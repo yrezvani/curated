@@ -3,7 +3,7 @@ import ArtGallery from './pages/ArtGallery';
 import ClassificationDetail from './pages/ClassificationDetail';
 import Home from './pages/Home'; 
 import ArtworkDetail from './pages/ArtworkDetail';
-import NavBar from './pages/NavBar';
+import NavBar from './components/NavBar';
 import SearchResults from './pages/SearchResults';
 import Footer from './components/Footer';
 import Contact from './pages/Contact';
