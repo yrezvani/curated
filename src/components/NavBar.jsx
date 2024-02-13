@@ -2,31 +2,43 @@ import React, { useState } from 'react';
 import { Disclosure } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 
-import { useNavigate } from 'react-router-dom';const navigation = [
+import { useNavigate } from 'react-router-dom';
+
+const navigation = [
   { name: 'Home', href: '/', current: true },
   { name: 'Explorer', href: '/explorer', current: false },
   { name: 'My Gallery', href: '/my-gallery', current: false },
   { name: 'Search', href: '/search', current: false },
   { name: 'Contact', href: '/contact', current: false },
 
-];function classNames(...classes) {
+];
+
+function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 
-}export default function NavBar() {
+}
+
+export default function NavBar() {
   const [searchQuery, setSearchQuery] = useState('');
   const [showMobileSearch, setShowMobileSearch] = useState(false);
   const navigate = useNavigate();  const handleInputChange = (e) => {
     setSearchQuery(e.target.value);
-  };  const handleSubmit = (e) => {
+  };
+  
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (searchQuery.trim() !== '') {
       navigate(`/search?query=${encodeURIComponent(searchQuery.trim())}`);
       setSearchQuery('');
       setShowMobileSearch(false);
     }
-  };  const toggleMobileSearch = () => {
+  };
+  
+  const toggleMobileSearch = () => {
     setShowMobileSearch(!showMobileSearch);
-  };return (
+  };
+  
+  return (
   <Disclosure as="nav" className="bg-gray-800">
     {({ open }) => (
       <>
