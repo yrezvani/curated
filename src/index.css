@@ -4,8 +4,9 @@
 }
 
 body {
-  background: radial-gradient(#27212e, #221530);
+  background: linear-gradient(rgb(75 85 99), rgb(30 41 59),rgb(75 85 99));
   color: #d9c9ee;
+  height: 100%;
 }
 
 header {
