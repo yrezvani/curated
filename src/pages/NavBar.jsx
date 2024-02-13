@@ -1,4 +1,4 @@
-import React, { Fragment, useState} from 'react'
+import React, { Fragment, useState, useEffect} from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useNavigate } from 'react-router-dom'
@@ -37,12 +37,19 @@ export default function NavBar() {
     const [navItems, setNavItems] = useState(navigation);
     
         const handleItemClick = (index) => {
-            const updatedNavItems = navItems.map((item, i) => ({
-              ...item,
-              current: i === index,
-            }));
+          const updatedNavItems = navItems.map((item, i) => ({
+            ...item,
+            current: i === index,
+          }));
             setNavItems(updatedNavItems);
-          };
+        };
+    
+    useEffect(() => {
+        window.addEventListener('click', handleItemClick)
+        return () => {
+            window.removeEventListener('click', handleItemClick);
+        }
+    });
 
 
   return (
