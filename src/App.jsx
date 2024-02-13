@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ArtGallery from './components/ArtGallery';
-import ClassificationDetail from './components/ClassificationDetail';
+import ArtGallery from './pages/ArtGallery';
+import ClassificationDetail from './pages/ClassificationDetail';
 import Home from './pages/Home'; 
-import ArtworkDetail from './components/ArtworkDetail';
-import NavBar from './pages/NavBar';
-import SearchResults from './components/SearchResults';
+import ArtworkDetail from './pages/ArtworkDetail';
+import NavBar from './components/NavBar';
+import SearchResults from './pages/SearchResults';
 import Footer from './components/Footer';
 import Contact from './pages/Contact';
 import MyGallery from './pages/MyGallery';
