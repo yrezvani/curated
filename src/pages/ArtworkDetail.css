@@ -54,7 +54,7 @@
     background-color: rgba(255, 255, 255, 1);
 }
 
-.btn-caption { 
+.save-btn-caption { 
     color: black; 
     opacity: 0;
     background-color: white;
@@ -65,7 +65,7 @@
     border: black 1px;
 }
 
-.icon-button:hover + .btn-caption { 
+.icon-button:hover + .save-btn-caption { 
     opacity: 1; 
     color: black;
 }
