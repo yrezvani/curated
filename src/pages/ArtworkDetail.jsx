@@ -60,7 +60,7 @@ const ArtworkDetail = ({ apiKey }) => {
                     <button onClick={saveToGallery} className='icon-button'>
                         <FontAwesomeIcon icon={faHeart} />
                     </button>
-                    <p className="btn-caption">Save to your gallery</p>
+                    <p className="save-btn-caption">Save to your gallery</p>
                 </div>
             </div>
 
