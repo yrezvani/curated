@@ -47,13 +47,14 @@ const MyGallery = () => {
                     <div key={item.id}>
                         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 gallery-item">
                             <div>
-                                <img className="rounded-t-lg artwork-image" src={item.primaryimageurl} alt={item.title} />
-                                <div className={`icon-overlay ${isClicked ? 'clicked' : ''}`}>
+                                <div className={`${isClicked ? 'clicked' : ''}`}>
                                     <button onClick={() => removeFromGallery(item.id)} className='icon-button'>
                                         <FontAwesomeIcon icon={faX} />
                                     </button>
                                     <p className="btn-caption">Remove from gallery</p>
                                 </div>
+                                <img className="rounded-t-lg artwork-image pt-3" src={item.primaryimageurl} alt={item.title} />
+                                
                             </div>
                             <div className="p-5">
                                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{item.title}</h5>

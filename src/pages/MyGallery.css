@@ -47,25 +47,13 @@
   }
 }
 
-.icon-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
-}
-
 .icon-button {
-  border-radius: 10px;
-  padding: 10px;
-  color: white;
-  background-color: black;
-  padding-top: 10%;
-  padding-right: 10%;
-  font-size: larger;
+  background: transparent;
+  border: none;
+  color: black;
+  cursor: pointer;
+  float: right;
+  margin-right: 10px;
 }
 
 .icon-button:hover {
@@ -77,20 +65,13 @@
   color: black; 
   opacity: 0;
   background-color: white;
-  margin-left: 10px;
-  padding-left: 2px;
-  padding-right: 2px;
   font-size: small;
   border: black 1px;
+  float: right;
+  padding-top: 10px;
 }
 
 .icon-button:hover + .btn-caption { 
   opacity: 1; 
   color: black;
-}
-
-.icon-overlay.clicked .icon-button {
-  color: red;
-  transform: scale(1.5);
-  transition: all 0.3s ease;
 }
