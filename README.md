@@ -33,8 +33,7 @@ The list of the Tech Stack used in developing the APP are below:
 ## Mock-Up
 
 The following image shows the web application's appearance and functionality: 
-![Curated](public/App.png)
-
+![Cuated](public/Curated.png)
 ## Presentation
 
 The link to the presentation slides can be found https://www.canva.com/design/DAF8tAL-UEE/ue0k0Z_zpn6Sce_Cwyy6YA/view?utm_content=DAF8tAL-UEE&utm_campaign=designshare&utm_medium=link&utm_source=editor 

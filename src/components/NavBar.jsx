@@ -1,30 +1,36 @@
 import React, { useState } from 'react';
 import { Disclosure } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { useNavigate, useLocation } from 'react-router-dom';
 
-import { useNavigate } from 'react-router-dom';
-
-const navigation = [
-  { name: 'Home', href: '/', current: true },
-  { name: 'Explorer', href: '/explorer', current: false },
-  { name: 'My Gallery', href: '/my-gallery', current: false },
-  { name: 'Search', href: '/search', current: false },
-  { name: 'Contact', href: '/contact', current: false },
-
-];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
-
 }
+
 
 export default function NavBar() {
   const [searchQuery, setSearchQuery] = useState('');
+
   const [showMobileSearch, setShowMobileSearch] = useState(false);
-  const navigate = useNavigate();  const handleInputChange = (e) => {
+
+  const navigate = useNavigate();
+
+  const location = useLocation();
+
+
+  const handleInputChange = (e) => {
     setSearchQuery(e.target.value);
   };
-  
+
+  const navigation = [
+    { name: 'Home', href: '/', current: location.pathname === '/' },
+    { name: 'Explorer', href: '/explorer', current: location.pathname === '/explorer' },
+    { name: 'My Gallery', href: '/my-gallery', current: location.pathname === '/my-gallery' },
+    { name: 'Search', href: '/search', current: location.pathname.startsWith('/search') },
+    { name: 'Contact', href: '/contact', current: location.pathname === '/contact' },
+  ];
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (searchQuery.trim() !== '') {
@@ -33,10 +39,11 @@ export default function NavBar() {
       setShowMobileSearch(false);
     }
   };
-  
+
   const toggleMobileSearch = () => {
     setShowMobileSearch(!showMobileSearch);
   };
+
   
   return (
   <Disclosure as="nav" className="bg-gray-800">
