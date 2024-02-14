@@ -18,11 +18,12 @@ export default function NavBar() {
 
   const location = useLocation();
 
-
+   {/* Function to get user input in search box*/}
   const handleInputChange = (e) => {
     setSearchQuery(e.target.value);
   };
 
+   {/* Variable for the Navigation Items */}
   const navigation = [
     { name: 'Home', href: '/', current: location.pathname === '/' },
     { name: 'Explorer', href: '/explorer', current: location.pathname === '/explorer' },
@@ -31,6 +32,7 @@ export default function NavBar() {
     { name: 'Contact', href: '/contact', current: location.pathname === '/contact' },
   ];
 
+   {/* Function to submit search term */}
   const handleSubmit = (e) => {
     e.preventDefault();
     if (searchQuery.trim() !== '') {
@@ -40,11 +42,12 @@ export default function NavBar() {
     }
   };
 
+   {/* Function to toggle search bar in Mobile view */}
   const toggleMobileSearch = () => {
     setShowMobileSearch(!showMobileSearch);
   };
 
-  
+
   return (
   <Disclosure as="nav" className="bg-gray-800">
     {({ open }) => (
