@@ -54,17 +54,18 @@
   right: 0;
   bottom: 0;
   display: flex;
-  justify-content:right;
-  align-items: first baseline;
-  padding-top: 10%;
-  padding-right: 10%;
+  justify-content: flex-end;
+  align-items: flex-start;
 }
 
 .icon-button {
-  background-color: transparent; 
-  border-radius: 50%;
+  border-radius: 10px;
   padding: 10px;
   color: white;
+  background-color: black;
+  padding-top: 10%;
+  padding-right: 10%;
+  font-size: larger;
 }
 
 .icon-button:hover {

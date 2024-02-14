@@ -7,8 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faX } from '@fortawesome/free-solid-svg-icons'
 
 const MyGallery = () => {
-
     const [isClicked, setIsClicked] = useState(false);
+    const [items, setItems] = useState([]);
 
     const settings = {
         dots: true,
@@ -18,9 +18,6 @@ const MyGallery = () => {
         slidesToScroll: 1
     };
 
-    const [items, setItems] = useState([]);
-
-    {/*getting data stored in local storage*/ }
     useEffect(() => {
         const data = JSON.parse(localStorage.getItem('items'));
         if (data) {
@@ -28,20 +25,12 @@ const MyGallery = () => {
         }
     }, []);
 
-    const removeFromGallery = () => {
-        let items = JSON.parse(localStorage.getItem('items')) || [];
-        if (artwork) {
-            {/* create a check in local storage */ }
-            const isAlreadySaved = items.some(item => item.id === artwork.id);
-            if (!isAlreadySaved) {
-                items.push(artwork);
-                localStorage.setItem('items', JSON.stringify(items));
-                console.log(items);
-                handleButtonClick();
-            } else {
-                console.log("Artwork already saved.");
-            }
-        }
+    const removeFromGallery = (itemId) => {
+        const updatedItems = items.filter(item => item.id !== itemId);
+        setItems(updatedItems);
+        localStorage.setItem('items', JSON.stringify(updatedItems));
+        handleButtonClick();
+        toggleAlert('Item removed');
     };
 
     const handleButtonClick = () => {
@@ -51,14 +40,21 @@ const MyGallery = () => {
         }, 1000);
     };
 
-
     return (
         <div className='art-gallery'>
             <Slider {...settings} className='slides'>
                 {items.map(item => (
-                    <>
-                        <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 gallery-item" key={item.id}>
-                            <img className="rounded-t-lg artwork-image" src={item.primaryimageurl} alt={item.title} />
+                    <div key={item.id}>
+                        <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 gallery-item">
+                            <div>
+                                <img className="rounded-t-lg artwork-image" src={item.primaryimageurl} alt={item.title} />
+                                <div className={`icon-overlay ${isClicked ? 'clicked' : ''}`}>
+                                    <button onClick={() => removeFromGallery(item.id)} className='icon-button'>
+                                        <FontAwesomeIcon icon={faX} />
+                                    </button>
+                                    <p className="btn-caption">Remove from gallery</p>
+                                </div>
+                            </div>
                             <div className="p-5">
                                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{item.title}</h5>
                                 {item.period && <p className="mb-3 font-normal text-gray-700 dark:text-gray-400"><strong>Period:</strong> {item.period}</p>}
@@ -66,18 +62,10 @@ const MyGallery = () => {
                                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{item.description}</p>
                             </div>
                         </div>
-
-                    </>
+                    </div>
                 ))}
             </Slider>
-            <div className={`icon-overlay ${isClicked ? 'clicked' : ''}`}>
-                                <button onClick={removeFromGallery} className='icon-button'>
-                                <FontAwesomeIcon icon={faX} />
-                                </button>
-                                <p className="btn-caption">Remove from gallery</p>
-                            </div>
         </div>
-
     );
 };
 
