@@ -1,3 +1,4 @@
+// Import necessary hooks and components from React, React Router, and third-party libraries
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
@@ -7,13 +8,17 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './ArtGallery.css';
 
+// Define a constant for the API key
 const apiKey = '0f4dc3f5-f76a-40aa-adaf-78bcdc8f2e05';
 
 function ArtGallery() {
+
+    // State for storing artworks based on classification and loading state
     const [classificationArtworks, setClassificationArtworks] = useState([]);
     const [loading, setLoading] = useState(true); 
     const navigate = useNavigate();
 
+    // Fetch classifications and setup resize listener on component mount    
     useEffect(() => {
         fetchClassifications();
         window.addEventListener('resize', handleResize);
@@ -22,12 +27,15 @@ function ArtGallery() {
         };
     }, []);
 
+    // Trigger handleResize on component mount to adjust slider settings based on viewport width    
     useEffect(() => {
         handleResize();
     }, []); 
 
+    // IDs for classifications of interest    
     const interestedClassificationIds = ['492', '1078', '344', '197', '17', '19', '21', '23', '26', '30', '32', '50', '62', '75', '105', '133', '155', '185', '242', '359', '381', '384', '1185'];
-    
+
+    // Fetch classifications from the API and then fetch artworks for those classifications    
     const fetchClassifications = async () => {
         const url = `https://api.harvardartmuseums.org/classification?apikey=${apiKey}&size=100`;
         try {
@@ -42,6 +50,7 @@ function ArtGallery() {
         }
     };
 
+    // Fetch artworks for given classifications and update state    
     const fetchArtworksForClassifications = async (classifications) => {
         const filteredClassifications = classifications.filter(classification => interestedClassificationIds.includes(classification.id.toString()));
         const promises = filteredClassifications.map(async classification => {
@@ -61,6 +70,7 @@ function ArtGallery() {
         setClassificationArtworks(results.filter(result => result !== null));
     };
 
+    // Adjust slider settings based on viewport width    
     const handleResize = () => {
         const newSettings = { ...settings };
         if (window.innerWidth < 768) {
@@ -73,6 +83,7 @@ function ArtGallery() {
         setSettings(newSettings);
     };
 
+    // Initial slider settings    
     const [settings, setSettings] = useState({
         dots: true,
         infinite: false,
@@ -80,7 +91,8 @@ function ArtGallery() {
         slidesToShow: 3, 
         slidesToScroll: 3,
     });
-    
+
+    // Handle click on an artwork by navigating to its classification page    
     const handleArtworkClick = (classificationId) => {
         if (classificationId) {
             navigate(`/classification/${classificationId}`);
@@ -89,6 +101,7 @@ function ArtGallery() {
         }
     };
 
+    // Render the art gallery component    
     return (
         <div className="art-gallery">
             <h1 className='explorer-title' >Art Explorer</h1>
