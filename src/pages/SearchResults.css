@@ -56,6 +56,10 @@
     border-radius: 5px;
   }
   
+  .artwork-item:hover {
+    cursor: pointer;
+  }
+
   .artwork-item h3 {
     padding-bottom: 10px;
   }
@@ -65,10 +69,6 @@
     border-radius: 5px;
   }
   
-  .artwork-image:hover {
-    cursor: pointer;
-  }
-
   .search-text {
     text-align: center;
   }
