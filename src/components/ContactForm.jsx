@@ -69,7 +69,7 @@ const ContactForm = () => {
   return (
     <div className='ContactForm'>
       <div className='container'>
-        <div className='row'>
+        <div className='row justify-center'>
           <div className='text-center'>
             <div className='contactForm'>
               <form id='contact-form' noValidate onSubmit={handleSubmit(onSubmit)}>
