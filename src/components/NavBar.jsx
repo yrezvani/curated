@@ -111,7 +111,7 @@ export default function NavBar() {
                 />
                 <button
                   type="submit"
-                  className="p-2 text-white bg-transparent rounded-md"
+                  className="p-2 font-sans font-thin text-white bg-transparent rounded-md"
                 >
                   <MagnifyingGlassIcon className="w-5 h-5" />
                 </button>
@@ -123,7 +123,7 @@ export default function NavBar() {
             <form onSubmit={handleSubmit} className="flex">
               <input
                 type="search"
-                className="flex-1 block w-full rounded-md border border-gray-300 pl-4 pr-10 py-2 leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                className="flex-1 block w-full font-sans font-thin rounded-md border border-gray-300 pl-4 pr-10 py-2 leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                 placeholder="Search by Art name"
                 value={searchQuery}
                 onChange={handleInputChange}
@@ -145,7 +145,7 @@ export default function NavBar() {
                 href={item.href}
                 className={classNames(
                   item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                  'block px-3 py-2 rounded-md text-base font-medium'
+                  'block px-3 py-2 rounded-md text-base font-sans font-thin'
                 )}
                 aria-current={item.current ? 'page' : undefined}
               >
