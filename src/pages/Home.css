@@ -2,7 +2,3 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-.home-container p {
-    font-weight: 500;
-    color: white;
-}

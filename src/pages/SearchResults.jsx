@@ -67,24 +67,24 @@ const SearchResults = ({ apiKey }) => {
   // Render search form and results
   return (
     <div className="search-results-container">
-      <h2>Search for Artwork</h2>
+      <h2 className='font-sans font-thin'>Search for artwork</h2>
       <form onSubmit={handleSubmit} className="search-form">
-        <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search by Artwork" className="search-input" />
-        <input type="text" value={artist} onChange={(e) => setArtist(e.target.value)} placeholder="Search by Artist" className="search-input" />
-        <button type="submit" className="search-button">Search</button>
+        <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search by title" className="font-sans font-thin search-input" />
+        <input type="text" value={artist} onChange={(e) => setArtist(e.target.value)} placeholder="Search by artist" className="font-sans font-thin search-input" />
+        <button type="submit" className="font-sans font-thin search-button">Search</button>
       </form>
       {loading ? (
-        <p className="results-loading">Loading...</p>
+        <p className="font-sans font-thin results-loading">Loading...</p>
       ) : !searchAttempted ? (
-        <p className="search-text">Please enter a search query.</p>
+        <p className="font-sans font-thin search-text">Please enter a search query.</p>
       ) : results.length === 0 ? (
-        <div className="no-results-message">
+        <div className="font-sans font-thin no-results-message">
           <p>No artworks found. Please try another search.</p>
         </div>
       ) : (
         <div className="artwork-results">
           {results.map((artwork, index) => (
-            <div key={index} className="artwork-item" onClick={() => navigate(`/artwork/${artwork.id}`)}>
+            <div key={index} className="font-sans font-thin artwork-item" onClick={() => navigate(`/artwork/${artwork.id}`)}>
               <h3>{artwork.title}</h3>
               {artwork.primaryimageurl && (
                 <LazyLoadImage alt={artwork.title} src={artwork.primaryimageurl} effect="blur" className="artwork-image" />

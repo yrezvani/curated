@@ -5,7 +5,7 @@ import "./Footer.css";
 function Footer() {
     return ( <section className="bg-gray-800 text-gray-400">
     <div className="max-w-screen-xl px-4 py-2 mx-auto space-y-4 overflow-hidden sm:px-6 lg:px-8">
-        <nav className="flex flex-wrap justify-center -mx-5 -my-2">
+        <nav className="flex flex-wrap justify-center -mx-5 -my-2 font-sans font-thin text-m">
             {/*Navigation links*/}
             <div className="px-5 py-2">
                 <a href="/" className="text-base leading-6">
@@ -60,7 +60,7 @@ function Footer() {
                 </svg>
             </a>
         </div>
-        <p className="mt-8 text-base leading-6 text-center text-gray-400">
+        <p className="mt-8 text-base leading-6 font-sans font-thin text-sm text-center text-gray-400">
             © 2024 Curated, Inc. Designed by Dale, Lydia, Gregory & Yasser.
         </p>
     </div>

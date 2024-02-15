@@ -78,7 +78,7 @@ const ContactForm = () => {
                     <input
                       type='text'
                       name='name'
-                      className='form-control formInput w-4/5 rounded-md border border-[#e0e0e0] bg-white my-2 mx-8 py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md'
+                      className='font-sans font-thin form-control formInput w-4/5 rounded-md border border-[#e0e0e0] bg-white my-2 mx-8 py-3 px-6 text-base font-medium text-gray-500 outline-none focus:border-[#6A64F1] focus:shadow-md'
                       placeholder='Name'
                       {...register('name', { required: true })}
                     />
@@ -87,7 +87,7 @@ const ContactForm = () => {
                     <input
                       type='email'
                       name='email'
-                      className='form-control formInput w-4/5 rounded-md border border-[#e0e0e0] bg-white my-2 mx-8 py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md'
+                      className='font-sans font-thin form-control formInput w-4/5 rounded-md border border-[#e0e0e0] bg-white my-2 mx-8 py-3 px-6 text-base font-medium text-gray-500 outline-none focus:border-[#6A64F1] focus:shadow-md'
                       placeholder='Email address'
                       {...register('email', { required: true })}
                     />
@@ -98,7 +98,7 @@ const ContactForm = () => {
                     <input
                       type='text'
                       name='subject'
-                      className='form-control formInput w-4/5 rounded-md border border-[#e0e0e0] bg-white my-2 mx-8 py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md'
+                      className='font-sans font-thin form-control formInput w-4/5 rounded-md border border-[#e0e0e0] bg-white my-2 mx-8 py-3 px-6 text-base font-medium text-gray-500 outline-none focus:border-[#6A64F1] focus:shadow-md'
                       placeholder='Subject'
                       {...register('subject', { required: true })}
                     />
@@ -109,13 +109,13 @@ const ContactForm = () => {
                     <textarea
                       rows={3}
                       name='message'
-                      className='form-control formInput w-4/5 rounded-md border border-[#e0e0e0] bg-white my-10 mx-8 py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md'
+                      className='font-sans font-thin form-control formInput w-4/5 rounded-md border border-transparent bg-white my-10 mx-8 py-3 px-6 text-base font-medium text-gray-500 outline-none focus:border-[#6A64F1] focus:shadow-md'
                       placeholder='Message'
                       {...register('message', { required: true })}
                     />
                   </div>
                 </div>
-                <button className='submit-btn hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-base font-semibold text-white outline-none' type='submit' disabled={disabled}>
+                <button className='font-sans font-thin submit-btn hover:shadow-form rounded-md bg-gray-800 py-3 px-8 text-base font-semibold text-white outline-none' type='submit' disabled={disabled}>
                   Submit
                 </button>
               </form>
@@ -126,7 +126,7 @@ const ContactForm = () => {
       {/*write alert compontent*/} 
       {alertInfo.display && (
         <div
-          className={`alert alert-${alertInfo.type} alert-dismissible mt-5`}
+          className={`font-sans font-thin alert alert-${alertInfo.type} alert-dismissible mt-5`}
           role='alert'
         >
           {alertInfo.message}

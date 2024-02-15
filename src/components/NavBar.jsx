@@ -56,7 +56,7 @@ export default function NavBar() {
           <div className="relative flex items-center justify-between h-16">
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
               {/* Mobile menu button*/}
-              <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+              <Disclosure.Button className="inline-flex items-center font-sans font-thin justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                 <span className="sr-only">Open main menu</span>
                 {open ? (
                   <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
@@ -66,7 +66,7 @@ export default function NavBar() {
               </Disclosure.Button>
               {/* Mobile search button */}
               <button
-                className="ml-3 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
+                className="ml-3 inline-flex items-center font-sans font-thin justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
                 onClick={toggleMobileSearch}
               >
                 <MagnifyingGlassIcon className="h-6 w-6" aria-hidden="true" />
@@ -89,7 +89,7 @@ export default function NavBar() {
                       href={item.href}
                       className={classNames(
                         item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                        'px-3 py-2 rounded-md text-sm font-medium font-sans'
+                        'px-3 py-2 rounded-md text-m font-sans font-thin'
                       )}
                       aria-current={item.current ? 'page' : undefined}
                     >
@@ -104,7 +104,7 @@ export default function NavBar() {
                 <input
                   type="search"
                   className="w-full px-3 py-2 leading-5 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-500"
-                  placeholder="Search by Art name"
+                  placeholder="Search by title"
                   aria-label="Search"
                   value={searchQuery}
                   onChange={handleInputChange}
