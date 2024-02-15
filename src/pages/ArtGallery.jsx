@@ -104,15 +104,15 @@ function ArtGallery() {
     // Render the art gallery component    
     return (
         <div className="art-gallery">
-            <h1 className='explorer-title' >Art Explorer</h1>
+            <h1 className='font-sans font-thin explorer-title' >Explorer</h1>
             <main>
                 {loading ? ( 
-                    <div className="loading-text">Loading...</div>
+                    <div className="font-sans font-thin loading-text">Loading...</div>
                 ) : (
                     <Slider {...settings}>
                         {classificationArtworks.map((item, index) => (
                             <div key={index} className="slide" onClick={() => handleArtworkClick(item.classificationId)}>
-                                <h3 className='class-name' >{item.classification}</h3>
+                                <h3 className='font-sans font-thin class-name' >{item.classification}</h3>
                                 <div className="image-container">
                                     <LazyLoadImage
                                         alt={item.artwork.title}
@@ -122,7 +122,7 @@ function ArtGallery() {
                                         className='artwork-image'
                                     />
                                 </div>
-                                <p className='artwork-description' >{item.artwork.title}</p>
+                                <p className='font-sans font-thin artwork-description' >{item.artwork.title}</p>
                             </div>
                         ))}
                     </Slider>

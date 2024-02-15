@@ -57,9 +57,9 @@ const ClassificationDetail = ({ apiKey }) => {
     
     return (
         <div>
-            <h2 className="class-title">{classificationInfo?.name}</h2>
+            <h2 className="class-title font-sans font-thin">{classificationInfo?.name}</h2>
             <p>{classificationInfo?.description}</p>
-            {artworks.length === 0 && <p className="loading-text">Loading...</p>} {/* Render loading text when no artworks */}            
+            {artworks.length === 0 && <p className="font-sans font-thin loading-text">Loading...</p>} {/* Render loading text when no artworks */}            
             <div className="gallery">
                 {artworks.map((artwork, index) => (
                     <div

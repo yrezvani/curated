@@ -42,24 +42,25 @@ const MyGallery = () => {
 
     return (
         <div className='art-gallery'>
+            <h1 className='font-sans font-thin contact-heading text-3xl text-center py-10 mx-8'>My gallery</h1>
             <Slider {...settings} className='slides'>
                 {items.map(item => (
                     <div key={item.id}>
-                        <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 gallery-item">
+                        <div className="font-sans font-thin max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 gallery-item">
                             <div>
                                 <div className={`${isClicked ? 'clicked' : ''}`}>
                                     <button onClick={() => removeFromGallery(item.id)} className='icon-button'>
                                         <FontAwesomeIcon icon={faX} />
                                     </button>
-                                    <p className="btn-caption">Remove from gallery</p>
+                                    <p className="font-sans font-thin btn-caption">Remove from gallery</p>
                                 </div>
                                 <img className="rounded-t-lg artwork-image pt-3" src={item.primaryimageurl} alt={item.title} />
                                 
                             </div>
                             <div className="p-5">
-                                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{item.title}</h5>
-                                {item.period && <p className="mb-3 font-normal text-gray-700 dark:text-gray-400"><strong>Period:</strong> {item.period}</p>}
-                                {item.people && <p className="mb-3 font-normal text-gray-700 dark:text-gray-400"><strong>Artist:</strong> {item.people[0].name}</p>}
+                                <h5 className="mb-2 text-2xl font-sans font-thin tracking-tight text-gray-900 dark:text-white">{item.title}</h5>
+                                {item.period && <p className="font-sans font-thin mb-3 font-normal text-gray-700 dark:text-gray-400"><strong>Period:</strong> {item.period}</p>}
+                                {item.people && <p className="font-sans font-thin mb-3 font-normal text-gray-700 dark:text-gray-400"><strong>Artist:</strong> {item.people[0].name}</p>}
                                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{item.description}</p>
                             </div>
                         </div>

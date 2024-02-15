@@ -44,11 +44,11 @@ const ArtworkDetail = ({ apiKey }) => {
         }, 1000);
     };
 
-    if (!artwork) return <div>Loading...</div>;
+    if (!artwork) return <div className='font-sans font-thin'>Loading...</div>;
 
     return (
         <div className='artwork-detail'>
-            <h2>{artwork.title}</h2>
+            <h2 className='font-sans font-thin'>{artwork.title}</h2>
             <div className='artwork-image-container'>
                 <LazyLoadImage
                     alt={artwork.title}
@@ -60,13 +60,13 @@ const ArtworkDetail = ({ apiKey }) => {
                     <button onClick={saveToGallery} className='icon-button'>
                         <FontAwesomeIcon icon={faHeart} />
                     </button>
-                    <p className="save-btn-caption">Save to your gallery</p>
+                    <p className="save-btn-caption font-sans font-thin">Save to your gallery</p>
                 </div>
             </div>
 
-            {artwork.period && <p><strong>Period:</strong> {artwork.period}</p>}
-            {artwork.people && <p><strong>Artist:</strong> {artwork.people[0].name}</p>}
-            <p>{artwork.description}</p>
+            {artwork.period && <p className='font-sans font-thin'><strong>Period:</strong> {artwork.period}</p>}
+            {artwork.people && <p className='font-sans font-thin'><strong>Artist:</strong> {artwork.people[0].name}</p>}
+            <p className='font-sans font-thin'>{artwork.description}</p>
         </div>
     );
 };
