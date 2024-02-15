@@ -30,7 +30,13 @@
   margin-bottom: 100px;
 }
 
-
+.btn-caption {
+  padding: 2px!important;
+  font-size: 16px!important;
+  border-radius: 3px;
+  background-color: initial!important;
+  color: white!important;
+}
 
 @media (max-width: 768px) {
     
