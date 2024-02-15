@@ -25,7 +25,6 @@ The list of the Tech Stack used in developing the APP are below:
 ## Collaborators
 
 * [Dale Warburton](https://github.com/Dezmondo7)
-* [Emmanuel Boadi](https://github.com/emmaboadi)
 * [Gregory Oghenah](https://github.com/kenigreg)
 * [Lydia Barham](https://github.com/lydiabarham)
 * [Yasser Rezvani](https://github.com/yrezvani)
