@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import emailjs from 'emailjs-com';
-import "../pages/Contact.css";
 
 {/*Personal keys needed for emailjs */} 
 const REACT_APP_SERVICE_ID = "service_sh4ltnd";
