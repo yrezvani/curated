@@ -39,5 +39,6 @@ The link to the presentation slides can be found https://www.canva.com/design/DA
 
 ## Deployment
 
-The application is deployed live at the following 
+The application is deployed live at the following link https://curatedcanvas.netlify.app/
+
 
